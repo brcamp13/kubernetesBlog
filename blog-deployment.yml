@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: blog
+  template:
+    metadata: 
+      labels: 
+        app: blog
+    spec:
+      containers:
+      - env:
+        image: bcampbell13/blog:latest
+        imagePullPolicy: Always
+        name: blog
+        ports:
+        - containerPort: 80
